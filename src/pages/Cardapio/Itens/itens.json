@@ -5,7 +5,7 @@
     "photo": "/assets/pratos/macarrao_mediterraneo.png",
     "size": 400,
     "serving": 2,
-    "price": 73.0,
+    "price": 73.5,
     "id": 1,
     "category": {
       "id": 1,
@@ -108,7 +108,7 @@
     "description": "Porção de almôndegas com sour cream, cebola e tempêros. Acompanha arroz ou massa.",
     "photo": "/assets/pratos/almondegas.png",
     "size": 740,
-    "serving": 3,
+    "serving": 4,
     "price": 120.0,
     "id": 9,
     "category": {
