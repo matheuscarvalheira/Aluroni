@@ -4,8 +4,6 @@ import 'normalize.css';
 import './index.css';
 import Router from './routes';
 
-Router;
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
