@@ -12,8 +12,6 @@
   <img src="./public/images/options.png" width="470" center/>
 </p>
 
----
-
 ## 🔎 Tecnologias usadas:
 
 Esse projeto foi feito usando essas tecnologias:
@@ -25,8 +23,6 @@ Esse projeto foi feito usando essas tecnologias:
 - [ESLint](https://eslint.org/)
 
 - [SASS](https://sass-lang.com/)
-
----
 
 ## 🎬 Como rodar o projeto:
 
