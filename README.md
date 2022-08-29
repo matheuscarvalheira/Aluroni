@@ -9,7 +9,8 @@
 <p>
   <img src="./public/images/recommendations.png" width="470"/>
   <img src="./public/images/menu.png" width="470"/>
-  <img src="./public/images/options.png" width="470" center/>
+  <img src="./public/images/options.png" width="470" />
+  <img src="./public/images/notfound.png" width="470" center/>
 </p>
 
 ## 🔎 Tecnologias usadas:
