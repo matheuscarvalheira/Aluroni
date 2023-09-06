@@ -50,6 +50,5 @@ export default function Menu({toggleTheme}: Props) {
         onColor={colors.secundary}
       />
     </nav>
-    
   );
 }
