@@ -1,6 +1,6 @@
 import styles from './Ordenador.module.scss';
 import opcoes from './opcoes.json';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, memo, useState } from 'react';
 import classNames from 'classnames';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
@@ -13,7 +13,7 @@ interface IOrdenador {
 
 
 
-export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
+function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
   const [aberto, setAberto] = useState(false);
   const nomeOrdenador = ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome;
   return (
@@ -50,3 +50,5 @@ export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
     </button>
   );
 }
+
+export default memo(Ordenador);
