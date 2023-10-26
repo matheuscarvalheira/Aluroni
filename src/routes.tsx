@@ -1,29 +1,46 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Cardapio from './pages/Cardapio';
-import Inicio from './pages/Inicio';
+import { ThemeProvider } from 'styled-components';
+import { lazy, useState, Suspense } from 'react';
 import Menu from 'components/Menu';
-import PaginaPadrao from './components/PaginaPadrao';
-import Sobre from 'pages/Sobre';
 import Footer from 'components/Footer';
-import NotFound from 'pages/NotFound';
-import Prato from 'pages/Prato';
+import light from 'styles/themes/light';
+import dark from 'styles/themes/dark';
+import GlobalStyles from './styles/global';
+
+const Cardapio = lazy(() => import('pages/Cardapio'));
+const PaginaPadrao = lazy(() => import('components/PaginaPadrao'));
+const Inicio = lazy(() => import('pages/Inicio'));
+const NotFound = lazy(() => import('pages/NotFound'));
+const Prato = lazy(() => import('pages/Prato'));
+const Sobre = lazy(() => import('pages/Sobre'));
 
 export default function AppRouter() {
+  const [theme, setTheme] = useState(light);
+
+  const toggleTheme = () => {
+    setTheme(theme.title === 'light' ? dark : light);
+  };
+
   return (
-    <main className="container">
-      <Router>
-        <Menu />
-        <Routes>
-          <Route path="/" element={<PaginaPadrao />}>
-            <Route index element={<Inicio />} />
-            <Route path="cardapio" element={<Cardapio />} />
-            <Route path="sobre" element={<Sobre />} />
-          </Route>
-          <Route path="prato/:id" element={<Prato />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </main>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <main className="container">
+        <Router>
+          <Suspense fallback={<p> Carregando...</p>}>
+            <Menu toggleTheme={toggleTheme} />
+            <Routes>
+              <Route path="/" element={<PaginaPadrao />}>
+                <Route index element={<Inicio />} />
+                <Route path="cardapio" element={<Cardapio />} />
+                <Route path="sobre" element={<Sobre />} />
+              </Route>
+              <Route path="prato/:id" element={<Prato />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <Footer />
+          </Suspense>
+        </Router>
+      </main>
+    </ThemeProvider>
   );
 }

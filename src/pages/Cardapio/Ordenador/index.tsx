@@ -1,32 +1,30 @@
 import styles from './Ordenador.module.scss';
 import opcoes from './opcoes.json';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, memo, useState } from 'react';
 import classNames from 'classnames';
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
 
 export type OpcoesOrdenador = '' | 'porcao' | 'qtd_pessoas' | 'preco';
 
 interface IOrdenador {
-  ordenador: OpcoesOrdenador,
-  setOrdenador: Dispatch<SetStateAction<OpcoesOrdenador>>
+  ordenador: OpcoesOrdenador;
+  setOrdenador: Dispatch<SetStateAction<OpcoesOrdenador>>;
 }
 
-
-
-export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
+function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
   const [aberto, setAberto] = useState(false);
-  const nomeOrdenador = ordenador && opcoes.find(opcao => opcao.value === ordenador)?.nome;
+  const nomeOrdenador =
+    ordenador && opcoes.find((opcao) => opcao.value === ordenador)?.nome;
   return (
     <button
       onBlur={() => setAberto(false)}
       className={classNames({
-        [styles.ordenador]:true,
+        [styles.ordenador]: true,
         [styles['ordenador--ativo']]: ordenador !== '',
-
       })}
       onClick={() => setAberto(!aberto)}
     >
-      <span>{nomeOrdenador || 'Ordenar Por' }</span>
+      <span>{nomeOrdenador || 'Ordenar Por'}</span>
       {aberto ? (
         <MdKeyboardArrowUp size={20} />
       ) : (
@@ -39,9 +37,10 @@ export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
         })}
       >
         {opcoes.map((opcao) => (
-          <div 
-            className={styles.ordenador__option} key={opcao.value}
-            onClick= {() => setOrdenador(opcao.value as OpcoesOrdenador)}
+          <div
+            className={styles.ordenador__option}
+            key={opcao.value}
+            onClick={() => setOrdenador(opcao.value as OpcoesOrdenador)}
           >
             {opcao.nome}
           </div>
@@ -50,3 +49,5 @@ export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
     </button>
   );
 }
+
+export default memo(Ordenador);

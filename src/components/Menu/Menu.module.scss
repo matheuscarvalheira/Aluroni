@@ -3,6 +3,7 @@
 
 .menu {
   display: flex;
+  align-items: center;
   padding: 20px $padding-horizontal;
   @media (max-width: $desktop_xsm) {
     padding: 20px $padding-horizontal-mobile;
@@ -19,9 +20,9 @@
   }
   &__link {
     list-style-type: none;
-    padding: 0 20px;
+    padding: 0 30px;
     a {
-      color: $dark;
+      color: #b1240b;
       cursor: pointer;
       font-size: 24px;
       font-weight: 600;
