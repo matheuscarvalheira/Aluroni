@@ -26,8 +26,8 @@ export default function AppRouter() {
       <GlobalStyles />
       <main className="container">
         <Router>
+          <Menu toggleTheme={toggleTheme} />
           <Suspense fallback={<p> Carregando...</p>}>
-            <Menu toggleTheme={toggleTheme} />
             <Routes>
               <Route path="/" element={<PaginaPadrao />}>
                 <Route index element={<Inicio />} />
@@ -37,8 +37,8 @@ export default function AppRouter() {
               <Route path="prato/:id" element={<Prato />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <Footer />
           </Suspense>
+          <Footer />
         </Router>
       </main>
     </ThemeProvider>
